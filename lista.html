@@ -54,6 +54,21 @@ h1 {
 <script>
 const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTzdoV5UmpvNQh1tKzAVaLh4MHeW82imqI-fciCiZdCOE4qc5u1bLhQoVUZRqKIfAuoUUiP-AADuxQq/pub?gid=872944158&single=true&output=csv";
 
+  <script>
+function convertirURL(url) {
+  if (!url) return "";
+
+  // Limpia comillas
+  url = url.replace(/"/g, "").trim();
+
+  // Extrae el ID del archivo
+  const match = url.match(/id=([^&]+)/);
+  if (!match) return "";
+
+  return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+}
+</script>
+  
 fetch(url)
   .then(res => res.text())
   .then(data => {
@@ -73,7 +88,7 @@ fetch(url)
           html += `
             <div class="regalo">
               🎁 ${cols[i]}
-              ${cols[i+1] ? `<img src="${cols[i+1]}" />` : ""}
+              ${cols[i+1] ? `<img src="${convertirURL(cols[i+1])}" />` : ""}
             </div>`;
         }
       }
