@@ -58,41 +58,36 @@ h1 {
 <div class="contenedor" id="lista"></div>
 
 <script>
-const sheetID = "1nfyh_rqYNYdGUbfIIpVQIAoLM77-OsRhVhoaCou_Oh8";
-const gid = "872944158";
+const apiURL = "https://script.google.com/macros/s/AKfycbzCg25ePe_m3Cv9PkSdqTyCdRHIWx2IqIWn4O3G57cgGlmiVxTXLfwDLM7Dz7Z9XgR3yw/exec";
 
-const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?gid=${gid}&tqx=out:json`;
-
-fetch(url)
-  .then(res => res.text())
-  .then(text => {
-    const json = JSON.parse(text.substring(47).slice(0, -2));
-    const filas = json.table.rows;
-
+fetch(apiURL)
+  .then(res => res.json())
+  .then(data => {
     const lista = document.getElementById("lista");
     const estado = document.getElementById("estado");
 
-    if (!filas || filas.length === 0) {
+    if (!data || data.length === 0) {
       estado.textContent = "No hay regalos registrados aún 🎁";
       return;
     }
 
     estado.style.display = "none";
 
-    filas.forEach(row => {
-      const c = row.c;
-      if (!c[1] || !c[1].v) return;
+    data.forEach(row => {
+      if (!row["Nombre"]) return;
 
-      let html = `<div class="tarjeta"><h3>${c[1].v}</h3>`;
+      let html = `<div class="tarjeta">
+        <h3>${row["Nombre"]}</h3>`;
 
-      for (let i = 2; i < c.length; i += 2) {
-        if (c[i] && c[i].v) {
+      for (let i = 1; i <= 5; i++) {
+        const regalo = row[`Regalo ${i}`];
+        const imagen = row[`Imagen ${i}`];
+
+        if (regalo) {
           html += `
             <div class="regalo">
-              🎁 ${c[i].v}
-              ${c[i+1] && c[i+1].v
-                ? `<img src="${convertirURL(c[i+1].v)}" loading="lazy">`
-                : ""}
+              🎁 ${regalo}
+              ${imagen ? `<img src="${convertirURL(imagen)}" loading="lazy">` : ""}
             </div>`;
         }
       }
