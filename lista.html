@@ -50,11 +50,7 @@ h1 {
 <h1>🎄 Lista de Regalos 🎁</h1>
 
 <div class="contenedor" id="lista"></div>
-
 <script>
-const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTzdoV5UmpvNQh1tKzAVaLh4MHeW82imqI-fciCiZdCOE4qc5u1bLhQoVUZRqKIfAuoUUiP-AADuxQq/pub?gid=872944158&single=true&output=csv";
-
-  <script>
 function convertirURL(url) {
   if (!url) return "";
 
@@ -68,7 +64,9 @@ function convertirURL(url) {
   return `https://drive.google.com/uc?export=view&id=${match[1]}`;
 }
 </script>
-  
+<script>
+const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTzdoV5UmpvNQh1tKzAVaLh4MHeW82imqI-fciCiZdCOE4qc5u1bLhQoVUZRqKIfAuoUUiP-AADuxQq/pub?gid=872944158&single=true&output=csv";
+
 fetch(url)
   .then(res => res.text())
   .then(data => {
@@ -99,5 +97,5 @@ fetch(url)
   });
 </script>
 
-</body>
+</body>  
 </html>
