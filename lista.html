@@ -95,10 +95,25 @@ fetch(apiURL)
   });
 
 function convertirURL(url) {
-  const match = url.match(/id=([^&]+)/);
-  return match
-    ? `https://drive.google.com/uc?export=view&id=${match[1]}`
-    : "";
+  if (!url) return "";
+
+  url = url.toString().trim();
+  let id = "";
+
+  if (url.includes("id=")) {
+    id = url.split("id=")[1].split("&")[0];
+  } 
+  else if (url.includes("/file/d/")) {
+    id = url.split("/file/d/")[1].split("/")[0];
+  } 
+  else if (url.includes("uc?id=")) {
+    id = url.split("uc?id=")[1].split("&")[0];
+  }
+
+  if (!id) return "";
+
+  // 👇 ESTE ES EL CAMBIO CLAVE
+  return `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
 }
 </script>
 </body>
