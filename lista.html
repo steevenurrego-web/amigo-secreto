@@ -15,6 +15,12 @@ h1 {
   text-align: center;
 }
 
+.mensaje {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 18px;
+}
+
 .contenedor {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -48,8 +54,9 @@ h1 {
 <body>
 
 <h1>🎄 Lista de Regalos 🎁</h1>
-
+<div id="estado" class="mensaje">Cargando regalos...</div>
 <div class="contenedor" id="lista"></div>
+
 <script>
 const sheetID = "1nfyh_rqYNYdGUbfIIpVQIAoLM77-OsRhVhoaCou_Oh8";
 const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
@@ -59,29 +66,44 @@ fetch(url)
   .then(text => {
     const json = JSON.parse(text.substring(47).slice(0, -2));
     const filas = json.table.rows;
-    const contenedor = document.getElementById("lista");
+
+    const lista = document.getElementById("lista");
+    const estado = document.getElementById("estado");
+
+    if (!filas || filas.length === 0) {
+      estado.textContent = "No hay regalos registrados aún 🎁";
+      return;
+    }
+
+    estado.style.display = "none";
 
     filas.forEach(row => {
       const c = row.c;
-      if (!c[1]) return;
+      if (!c[1] || !c[1].v) return;
 
-      let html = `<div class="tarjeta"><h3>${c[1].v}</h3>`;
+      let html = `<div class="tarjeta">
+        <h3>${c[1].v}</h3>`;
 
-      for (let i = 2; i <= 10; i += 2) {
+      for (let i = 2; i < c.length; i += 2) {
         if (c[i] && c[i].v) {
           html += `
             <div class="regalo">
               🎁 ${c[i].v}
               ${c[i+1] && c[i+1].v
-                ? `<img src="${convertirURL(c[i+1].v)}">`
+                ? `<img src="${convertirURL(c[i+1].v)}" loading="lazy">`
                 : ""}
             </div>`;
         }
       }
 
       html += `</div>`;
-      contenedor.innerHTML += html;
+      lista.innerHTML += html;
     });
+  })
+  .catch(err => {
+    document.getElementById("estado").textContent =
+      "Error cargando los regalos 😕";
+    console.error(err);
   });
 
 function convertirURL(url) {
@@ -92,5 +114,5 @@ function convertirURL(url) {
 }
 </script>
 
-</body>  
+</body>
 </html>
