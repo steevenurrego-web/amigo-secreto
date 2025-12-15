@@ -84,7 +84,7 @@ fetch(apiURL)
           html += `
             <div class="regalo">
               🎁 ${r.texto}
-              ${r.imagen ? `<img src="${convertirURL(r.imagen)}" loading="lazy">` : ""}
+              ${r.imagen ? `<img src="${convertirURL(r.imagen)}" loading="lazy">  referrerpolicy="no-referrer"` : ""}
             </div>`;
         }
       });
