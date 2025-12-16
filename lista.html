@@ -2,15 +2,41 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Lista de Regalos 🎁</title>
+  <div class="header-navidad">
+  <img src="https://images.unsplash.com/photo-1543589077-47d81606c1bf" alt="Navidad">
+</div>
+<h1 class="titulo-principal">🎄 Lista de Regalos – Amigo Secreto 🎁</h1>
 
 <style>
+  .header-navidad {
+  width: 100%;
+  max-height: 220px;
+  overflow: hidden;
+  border-radius: 18px;
+  margin-bottom: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.header-navidad img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 body {
   font-family: Arial, sans-serif;
   background: #f5f5f5;
   padding: 20px;
 }
 
+  .titulo-principal {
+  text-align: center;
+  font-size: 42px;
+  margin: 20px 0 10px 0;
+  color: #b71c1c;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  letter-spacing: 1.5px;
+}
+  
 h1 {
   text-align: center;
 }
@@ -43,14 +69,16 @@ h1 {
 }  
 
 .tarjeta h3 {
-  margin: 0 0 15px 0;
-  padding: 12px;
-  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+  margin: 0 0 18px 0;
+  padding: 14px;
+  background: linear-gradient(135deg, #b71c1c, #2e7d32);
   color: white;
-  border-radius: 12px;
-  font-size: 22px;
+  border-radius: 14px;
+  font-size: 24px;
   text-align: center;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
 .regalo {
