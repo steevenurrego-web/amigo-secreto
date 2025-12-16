@@ -29,18 +29,38 @@ h1 {
 }
 
 .tarjeta {
-  background: white;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  border: 2px solid #e0e0e0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}  
+
 .tarjeta h3 {
-  margin-top: 0;
+  margin: 0 0 15px 0;
+  padding: 12px;
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+  color: white;
+  border-radius: 12px;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
 .regalo {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #ddd;
+}
+
+.regalo:last-child {
+  border-bottom: none;
 }
 
 .regalo img {
@@ -129,7 +149,7 @@ function convertirURL(url) {
   if (!id) return "";
 
   // 👇 ESTE ES EL CAMBIO CLAVE
-  return `https://drive.google.com/thumbnail?id=${id}&sz=w400`;
+  return `https://drive.google.com/thumbnail?id=${id}&sz=w300`;
 }
 </script>
 </body>
