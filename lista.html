@@ -60,7 +60,7 @@ h1 {
 <div class="contenedor" id="lista"></div>
 
 <script>
-const apiURL = "https://script.google.com/macros/s/AKfycbyMnYyJtpavFBC3ZenGiaoBd1pIRc0is9kWf7cqy-LhzcuetaqdqfGMWom8VX_0Iqas/exec";
+const apiURL = "PEGA_AQUI_LA_NUEVA_URL";
 
 fetch(apiURL)
   .then(res => res.json())
@@ -86,7 +86,7 @@ fetch(apiURL)
           html += `
             <div class="regalo">
               🎁 ${r.texto}
-              ${r.imagen ? `<img src="${convertirURL(r.imagen)}" loading="lazy" referrerpolicy="no-referrer"> ` : ""}
+              ${r.imagen ? `<img src="${convertirURL(r.imagen)}" loading="lazy">` : ""}
             </div>`;
         }
       });
@@ -97,25 +97,10 @@ fetch(apiURL)
   });
 
 function convertirURL(url) {
-  if (!url) return "";
-
-  url = url.toString().trim();
-  let id = "";
-
-  if (url.includes("id=")) {
-    id = url.split("id=")[1].split("&")[0];
-  } 
-  else if (url.includes("/file/d/")) {
-    id = url.split("/file/d/")[1].split("/")[0];
-  } 
-  else if (url.includes("uc?id=")) {
-    id = url.split("uc?id=")[1].split("&")[0];
-  }
-
-  if (!id) return "";
-
-  // 👇 ESTE ES EL CAMBIO CLAVE
-  return `https://drive.google.com/thumbnail?id=${id}&sz=w500`;
+  const match = url.match(/id=([^&]+)/);
+  return match
+    ? `https://drive.google.com/uc?export=view&id=${match[1]}`
+    : "";
 }
 </script>
 </body>
