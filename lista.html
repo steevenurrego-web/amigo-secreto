@@ -98,54 +98,11 @@ h1 {
   border-radius: 8px;
   margin-top: 8px;
 }
-.nieve {
-  position: fixed;
-  top: -10%;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  pointer-events: none;
-  z-index: 5;
-}
 
-.nieve span {
-  position: absolute;
-  top: -10%;
-  color: white;
-  font-size: 18px;
-  opacity: 0.35;
-  animation: caer linear infinite;
-}
-
-/* posiciones aleatorias */
-.nieve span:nth-child(1)  { left: 5%;  animation-duration: 12s; }
-.nieve span:nth-child(2)  { left: 15%; animation-duration: 15s; }
-.nieve span:nth-child(3)  { left: 25%; animation-duration: 10s; }
-.nieve span:nth-child(4)  { left: 35%; animation-duration: 14s; }
-.nieve span:nth-child(5)  { left: 45%; animation-duration: 11s; }
-.nieve span:nth-child(6)  { left: 55%; animation-duration: 16s; }
-.nieve span:nth-child(7)  { left: 65%; animation-duration: 13s; }
-.nieve span:nth-child(8)  { left: 75%; animation-duration: 18s; }
-.nieve span:nth-child(9)  { left: 85%; animation-duration: 12s; }
-.nieve span:nth-child(10) { left: 95%; animation-duration: 17s; }
-
-@keyframes caer {
-  from {
-    transform: translateY(-120%);
-  }
-  to {
-    transform: translateY(120%);
-  }
-}
 </style>
 </head>
 
 <body>
-<div class="nieve">
-  <span>❄</span><span>❅</span><span>❆</span><span>❄</span><span>❅</span>
-  <span>❆</span><span>❄</span><span>❅</span><span>❆</span><span>❄</span>
-  <span>❅</span><span>❆</span><span>❄</span><span>❅</span><span>❆</span>
-</div>
 
 <div id="estado" class="mensaje">Cargando regalos...</div>
 <div class="contenedor" id="lista"></div>
