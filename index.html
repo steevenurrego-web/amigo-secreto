@@ -2,51 +2,62 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
- <h1 class="titulo-principal">🎄 Amigo Secreto - 2025 🎁</h1>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  text-align: center;
-  padding: 50px;
-}
 
-.botones {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-  margin-top: 40px;
-}
+  <title>Amigo Secreto 2025</title>
 
-button {
-  width: 320px;
-  padding: 22px;
-  font-size: 22px;
-  font-weight: bold;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  background-color: #4CAF50;
-  color: white;
-}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-button:hover {
-  background-color: #45a049;
-}
-</style>
+    .titulo-principal {
+      font-size: 42px;
+      margin-bottom: 50px;
+    }
+
+    .botones {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    button {
+      width: 360px;
+      padding: 26px;
+      font-size: 26px;
+      font-weight: bold;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      transform: scale(1.04);
+    }
+  </style>
 </head>
+
 <body>
 
-  <h1>🎄 Amigo Secreto 🎁</h1>
+  <h1 class="titulo-principal">🎄 Amigo Secreto - 2025 🎁</h1>
 
-  <button onclick="window.location.href='https://forms.gle/bXB52KKjGv2hcEn69'">
-    Registrar opciones de regalo
-  </button>
+  <div class="botones">
+    <button onclick="window.location.href='https://forms.gle/bXB52KKjGv2hcEn69'">
+      Registrar opciones de regalo
+    </button>
 
-  <button onclick="window.location.href='lista.html'">
-    Ver lista de regalos
-  </button>
+    <button onclick="window.location.href='lista.html'">
+      Ver lista de regalos
+    </button>
+  </div>
 
 </body>
 </html>
